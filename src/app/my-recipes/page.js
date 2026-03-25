@@ -1,5 +1,6 @@
+import Link from "next/link";
 import Image from "next/image";
-import db from "@/utils/db";
+import { db } from "@/utils/db";
 
 async function getRecipes() {
   try {
@@ -39,59 +40,54 @@ export default async function MyRecipes() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {recipes.map((recipe) => (
-            <div
+            <Link
               key={recipe.id}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition"
+              href={`/my-recipes/${recipe.id}`}
+              className="group"
             >
-              {recipe.image_url && (
-                <Image
-                  src={recipe.image_url}
-                  alt={recipe.name}
-                  className="w-full h-48 object-cover"
-                  width={300}
-                  height={192}
-                />
-              )}
-              {!recipe.image_url && (
-                <div className="w-full h-48 bg-gradient-to-br from-orange-200 to-red-200 flex items-center justify-center">
-                  <span className="text-6xl">🍳</span>
-                </div>
-              )}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {recipe.name}
-                </h3>
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                    Ingredients:
-                  </h4>
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {recipe.ingredients}
-                  </p>
-                </div>
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-1">
-                    Instructions:
-                  </h4>
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {recipe.instructions}
-                  </p>
-                </div>
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                  <span>
-                    {new Date(recipe.created_at).toLocaleDateString()}
-                  </span>
-                </div>
-                <div className="flex gap-2">
-                  <button className="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded font-semibold transition text-sm">
-                    View
-                  </button>
-                  <button className="flex-1 border-2 border-orange-500 text-orange-500 hover:bg-orange-50 px-4 py-2 rounded font-semibold transition text-sm">
-                    Edit
-                  </button>
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition h-full flex flex-col">
+                {recipe.image_url && (
+                  <Image
+                    src={recipe.image_url}
+                    alt={recipe.name}
+                    className="w-full h-48 object-cover group-hover:opacity-90 transition"
+                    width={300}
+                    height={192}
+                  />
+                )}
+                {!recipe.image_url && (
+                  <div className="w-full h-48 bg-gradient-to-br from-orange-200 to-red-200 flex items-center justify-center group-hover:opacity-90 transition">
+                    <span className="text-6xl">🍳</span>
+                  </div>
+                )}
+                <div className="p-6 flex-grow flex flex-col">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition">
+                    {recipe.name}
+                  </h3>
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-1">
+                      Ingredients:
+                    </h4>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {recipe.ingredients}
+                    </p>
+                  </div>
+                  <div className="mb-4 flex-grow">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-1">
+                      Instructions:
+                    </h4>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {recipe.instructions}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span>
+                      {new Date(recipe.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}

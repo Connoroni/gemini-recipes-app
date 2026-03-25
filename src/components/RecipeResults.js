@@ -1,6 +1,6 @@
 "use client";
 
-export default function RecipeResults({ recipe, error }) {
+export default function RecipeResults({ recipe, error, onSave, onDiscard }) {
   if (error) {
     return (
       <div className="bg-red-50 border border-red-200 rounded-lg p-6">
@@ -56,22 +56,35 @@ export default function RecipeResults({ recipe, error }) {
           </h3>
           <ol className="space-y-3">
             {recipe.instructions
-              .split("\n")
+              .split(".")
               .filter(Boolean)
               .map((instruction, index) => (
                 <li key={index} className="flex gap-4">
                   <span className="font-semibold text-orange-500 flex-shrink-0">
                     {index + 1}.
                   </span>
-                  <span className="text-gray-700">{instruction.trim()}</span>
+                  <span className="text-gray-700">
+                    {instruction.trim() + "."}
+                  </span>
                 </li>
               ))}
           </ol>
         </div>
 
-        <button className="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition">
-          Save Recipe
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={onSave}
+            className="flex-1 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition"
+          >
+            Save Recipe
+          </button>
+          <button
+            onClick={onDiscard}
+            className="flex-1 border-2 border-gray-300 hover:bg-gray-50 text-gray-700 px-6 py-3 rounded-lg font-semibold transition"
+          >
+            Discard
+          </button>
+        </div>
       </div>
     );
   }

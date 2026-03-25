@@ -76,6 +76,10 @@ export default function Footer() {
           <p className="text-center text-sm">
             &copy; 2024 Recipe Maker. All rights reserved.
           </p>
+          <p className="text-sm text-center">
+            Disclaimer: This is a demo application for educational purposes
+            only. Most of the pages mentioned in this footer do not exist.
+          </p>
         </div>
       </div>
     </footer>

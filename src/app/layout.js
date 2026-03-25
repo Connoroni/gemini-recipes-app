@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Recipe Maker - Discover & Share Recipes",
-  description: "Explore thousands of recipes, create your own, and share your culinary masterpieces with our passionate cooking community.",
+  description:
+    "Explore thousands of recipes, create your own, and share your culinary masterpieces with our passionate cooking community.",
 };
 
 export default function RootLayout({ children }) {
