@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Recipe Maker - Discover & Share Recipes",
+  title: "Kitchen Pal - Discover & Share Recipes",
   description:
     "Explore thousands of recipes, create your own, and share your culinary masterpieces with our passionate cooking community.",
 };

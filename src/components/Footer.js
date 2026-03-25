@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-white text-lg font-bold mb-4 flex items-center gap-2">
-              <span>🍳</span> Recipe Maker
+              <span>🍳</span> Kitchen Pal
             </h3>
             <p className="text-sm">
               Discover, create, and share delicious recipes with our community.
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-gray-800 pt-8">
           <p className="text-center text-sm">
-            &copy; 2024 Recipe Maker. All rights reserved.
+            &copy; 2024 Kitchen Pal. All rights reserved.
           </p>
           <p className="text-sm text-center">
             Disclaimer: This is a demo application for educational purposes
